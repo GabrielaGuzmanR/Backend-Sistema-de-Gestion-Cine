@@ -8,6 +8,7 @@ const reservationRoutes = require('./routes/ReservationRoutes');
 const functionRoutes = require('./routes/FunctionRoutes');
 const seatRoutes = require('./routes/SeatRoutes');
 const app = express();
+const cors = require('cors');
 
 app.use(express.json());
 app.use('/users', userRoutes);
@@ -17,8 +18,13 @@ app.use('/reservations', reservationRoutes);
 app.use('/functions', functionRoutes);
 app.use('/seats', seatRoutes);
 
-
 const PORT = process.env.PORT || 3000;
+
+app.use(cors({
+  origin: '*', // Permite TODOS los orígenes (no recomendado para producción)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 sequelize.authenticate()
   .then(() => {
