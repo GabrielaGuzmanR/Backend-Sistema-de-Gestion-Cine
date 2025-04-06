@@ -3,6 +3,7 @@ const Function = require('../models/Function');
 const Movie = require('../models/Movie');
 const Room = require('../models/Room');
 const Seat = require('../models/Seat');
+const { sendReservationEmail } = require('../utils/emai-sender');
 
 const getAllReservations = async (req, res) => {
     try {
@@ -91,6 +92,11 @@ const createReservation = async (req, res) => {
             return res.status(400).json({ error: 'Some seats are not available' });
         }
 
+        const functionDetails = await Function.findByPk(functionId);
+        if (!functionDetails) {
+            return res.status(404).json({ error: 'Function not found' });
+        }
+
         const reservation = await Reservation.create({
             name,
             email,
@@ -107,6 +113,8 @@ const createReservation = async (req, res) => {
         if (!reservation) {
             return res.status(500).json({ error: 'Failed to create reservation' });
         }
+
+        await sendReservationEmail(email, reservation.id, functionDetails.date, seats, name);
 
         res.status(201).json(reservation);
     } catch (error) {
