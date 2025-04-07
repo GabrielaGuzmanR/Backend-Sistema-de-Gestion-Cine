@@ -88,9 +88,12 @@ const createReservation = async (req, res) => {
             },
         });
 
+
         if (foundSeats.length !== seats.length) {
             return res.status(400).json({ error: 'Some seats are not available' });
         }
+
+        const seatsNumbers = foundSeats.map(seat => seat.number);
 
         const functionDetails = await Function.findByPk(functionId);
         if (!functionDetails) {
@@ -114,7 +117,7 @@ const createReservation = async (req, res) => {
             return res.status(500).json({ error: 'Failed to create reservation' });
         }
 
-        await sendReservationEmail(email, reservation.id, functionDetails.date, seats, name);
+        await sendReservationEmail(email, reservation.id, functionDetails.date, seatsNumbers, name);
 
         res.status(201).json(reservation);
     } catch (error) {
