@@ -11,12 +11,11 @@ git clone https://github.com/GabrielaGuzmanR/Backend-Sistema-de-Gestion-Cine.git
 cd Backend-Sistema-de-Gestion-Cine
 npm install
 npm run dev
-
+```
 ## Estructura del Proyecto
 
 /Backend-Sistema-de-Gestion-Cine ├── /controllers # Lógica de negocio ├── /models # Esquemas de MongoDB ├── /routes # Definición de rutas ├── /services # Funciones auxiliares o servicios externos ├── /utils # Utilidades generales ├── app.js # Archivo principal de la app └── README.md
 
-markdown
 
 ## Despliegue en Render
 
