@@ -10,7 +10,6 @@ Primero, clona el repositorio y corre el servidor de desarrollo:
 git clone https://github.com/GabrielaGuzmanR/Backend-Sistema-de-Gestion-Cine.git
 cd Backend-Sistema-de-Gestion-Cine
 npm install
-npm run dev
 ```
 ## Estructura del Proyecto
 
