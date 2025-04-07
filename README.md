@@ -1,6 +1,6 @@
 # Backend-Sistema-de-Gestion-Cine
 
-Este es el backend del proyecto de Sistema de Gestión de Cine. Desarrollado con Node.js y Express, permite gestionar películas, salas, funciones, reservas y usuarios. Está conectado a una base de datos MongoDB y desplegado en la plataforma [Render](https://render.com).
+Este es el backend del proyecto de Sistema de Gestión de Cine. Desarrollado con Node.js y Express, permite gestionar películas, salas, funciones, reservas y usuarios. Está conectado a una base de datos MySQL y desplegado en la plataforma [Render](https://render.com).
 
 ## Getting Started
 
